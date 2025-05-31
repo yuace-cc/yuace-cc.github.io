@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hexo魔改记录</title>
+      <link href="/posts/e624/"/>
+      <url>/posts/e624/</url>
+      
+        <content type="html"><![CDATA[<h2 id="首页文章卡片擦亮效果"><a href="#首页文章卡片擦亮效果" class="headerlink" title="首页文章卡片擦亮效果"></a>首页文章卡片擦亮效果</h2><h3 id="1、新增css内容"><a href="#1、新增css内容" class="headerlink" title="1、新增css内容"></a>1、新增css内容</h3><ul><li>新建文件<code>/static/home.css</code>或在已引入的css中新增以下内容</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#recent-posts &gt; .recent-post-item:not(a)::before &#123;</span><br><span class="line">  content: &quot;&quot;;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 200%;</span><br><span class="line">  background: linear-gradient(to right, transparent, white, transparent);</span><br><span class="line">  transform: translateX(-200%);</span><br><span class="line">  transition: transform 0.5s linear;</span><br><span class="line">  z-index: 1;</span><br><span class="line">&#125;</span><br><span class="line">#recent-posts &gt; .recent-post-item:not(a):hover::before &#123;</span><br><span class="line">  transform: translateX(100%) skewX(-60deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2、引入内容"><a href="#2、引入内容" class="headerlink" title="2、引入内容"></a>2、引入内容</h3><ul><li>在<code>_config.anzhiyu.yml</code>主题配置文件下<code>inject</code>配置项中<code>head</code>处</li><li>引入<code>home.css</code>文件</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inject:</span><br><span class="line">  head:</span><br><span class="line">    - &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/home.css&quot;&gt; # 首页文章卡片擦亮效果</span><br></pre></td></tr></table></figure><h2 id="页脚挂件"><a href="#页脚挂件" class="headerlink" title="页脚挂件"></a>页脚挂件</h2><blockquote><p>只需在主题中引入以下JavaScript代码，即可在页脚动态插入一个动物挂件。</p></blockquote><blockquote><p>需要开启 主题配置文件中的<code>footer_bar</code>选项，设置为<code>true</code></p></blockquote><p>将以下代码直接插入到主题的JavaScript文件中，其他主题可能需要调整插入位置。</p><p>1.新建一个<code>footer-animal.js</code>文件，将以下代码粘贴进去。</p><p>2.然后在<code>_config.anzhiyu.yml</code>中<code>inject</code>选项的<code>bottom</code>中添加<code>    - &lt;script src=&quot;/static/footer-animal.js&quot; defer&gt;&lt;/script&gt; # 页脚挂件</code>。 根据你文件位置，自行调整。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"></span><br><span class="line">function initFooterAnimal() &#123;</span><br><span class="line">    const footerBar = document.querySelector(&#x27;#footer-bar&#x27;);</span><br><span class="line">    if (!footerBar) return console.error(&#x27;找不到指定元素&#x27;);</span><br><span class="line"></span><br><span class="line">    const footerAnimal = document.createElement(&#x27;div&#x27;);</span><br><span class="line">    footerAnimal.id = &#x27;footer-animal&#x27;;</span><br><span class="line">    footerAnimal.innerHTML = `</span><br><span class="line">        &lt;img class=&quot;animal entered loaded&quot;</span><br><span class="line">            src=&quot;https://i1.wp.com/ruom.wuaze.com/i/2024/10/19/473503.webp&quot;</span><br><span class="line">            alt=&quot;动物&quot; /&gt;</span><br><span class="line">    `;</span><br><span class="line">    </span><br><span class="line">    footerBar.insertAdjacentElement(&#x27;beforebegin&#x27;, footerAnimal);</span><br><span class="line"></span><br><span class="line">    const style = document.createElement(&#x27;style&#x27;);</span><br><span class="line">    style.textContent = `</span><br><span class="line">        #footer-animal &#123;</span><br><span class="line">            position: relative;</span><br><span class="line">        &#125;</span><br><span class="line">        #footer-animal::before &#123;</span><br><span class="line">            content: &#x27;&#x27;;</span><br><span class="line">            position: absolute;</span><br><span class="line">            bottom: 0;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 36px;</span><br><span class="line">            background: url(https://i1.wp.com/ruom.wuaze.com/i/2024/10/19/351933.webp) repeat center / auto 100%;</span><br><span class="line">            box-shadow: 0 4px 7px rgba(0,0,0,.15);</span><br><span class="line">        &#125;</span><br><span class="line">        .animal &#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            max-width: min(974px, 100vw);</span><br><span class="line">            margin: 0 auto;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line">        #footer-bar &#123;</span><br><span class="line">            margin-top: 0 !important;</span><br><span class="line">        &#125;</span><br><span class="line">        @media screen and (max-width: 1023px) &#123;</span><br><span class="line">            #footer-animal::before &#123;</span><br><span class="line">                height: 4vw;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        [data-theme=dark] #footer-animal &#123;</span><br><span class="line">            filter: brightness(.8);</span><br><span class="line">        &#125;</span><br><span class="line">    `;</span><br><span class="line">    document.head.appendChild(style);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">document.addEventListener(&#x27;DOMContentLoaded&#x27;, initFooterAnimal);</span><br><span class="line">document.addEventListener(&#x27;pjax:success&#x27;, initFooterAnimal);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 魔改 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 魔改 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux操作系统常用指令</title>
+      <link href="/posts/b8f8/"/>
+      <url>/posts/b8f8/</url>
+      
+        <content type="html"><![CDATA[<p><strong>更多命令请参阅<a href="https://blog.qianhuya.me/go.html?fox=aHR0cHM6Ly93d3cucnVub29iLmNvbS93M2Nub3RlL2xpbnV4LWNvbW1vbi1jb21tYW5kLTIuaHRtbA==">Linux 常用命令学习</a></strong></p><h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><h3 id="1️⃣ls-命令"><a href="#1️⃣ls-命令" class="headerlink" title="1️⃣ls 命令"></a>1️⃣ls 命令</h3><p>常用参数搭配实例</p><blockquote><p>就是 list 的缩写，通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限) 查看目录信息等等。</p></blockquote><ol><li>ls -a 列出目录所有文件，包含以.开始的隐藏文件</li><li>ls -A 列出除.及..的其它文件</li><li>ls -r 反序排列</li><li>ls -t 以文件修改时间排序</li><li>ls -S 以文件大小排序</li><li>ls -h 以易读大小显示</li><li>ls -l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来</li></ol><h3 id="2️⃣cd-命令"><a href="#2️⃣cd-命令" class="headerlink" title="2️⃣cd 命令"></a>2️⃣cd 命令</h3><p>命令语法实例</p><ol><li>cd [目录名]</li></ol><blockquote><p>说明：切换当前目录至 dirName。</p></blockquote><h3 id="3️⃣pwd-命令"><a href="#3️⃣pwd-命令" class="headerlink" title="3️⃣pwd 命令"></a>3️⃣pwd 命令</h3><p>命令语法实例</p><ol><li>pwd 命令用于查看当前工作目录路径。</li></ol><h3 id="4️⃣mkdir-命令"><a href="#4️⃣mkdir-命令" class="headerlink" title="4️⃣mkdir 命令"></a>4️⃣mkdir 命令</h3><p>命令语法实例</p><ol><li>mkdir 命令用于创建文件夹。</li></ol><blockquote><p>可用选项：</p><ul><li>-m: 对新建目录设置存取权限，也可以用 chmod 命令设置;</li><li>-p: 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后，系统将自动建立好那些尚不在的目录，即一次可以建立多个目录。</li></ul></blockquote><h3 id="5️⃣rm-命令"><a href="#5️⃣rm-命令" class="headerlink" title="5️⃣rm 命令"></a>5️⃣rm 命令</h3><p>命令语法实例</p><ol><li>rm [选项] 文件…</li></ol><blockquote><p>删除一个目录中的一个或多个文件或目录，如果没有使用 -r 选项，则 rm 不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p></blockquote><h3 id="6️⃣rmdir-命令"><a href="#6️⃣rmdir-命令" class="headerlink" title="6️⃣rmdir 命令"></a>6️⃣rmdir 命令</h3><p>命令语法实例</p><ol><li>从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对其父目录的写权限。</li></ol><blockquote><p>注意：不能删除非空目录</p></blockquote><h3 id="7️⃣mv-命令"><a href="#7️⃣mv-命令" class="headerlink" title="7️⃣mv 命令"></a>7️⃣mv 命令</h3><p>命令语法实例</p><ol><li>移动文件或修改文件名，根据第二参数类型（如目录，则移动文件；如为文件则重命名该文件）。</li><li>当第二个参数为目录时，第一个参数可以是多个以空格分隔的文件或目录，然后移动第一个参数指定的多个文件到第二个参数指定的目录中。</li></ol><h3 id="8️⃣cp-命令"><a href="#8️⃣cp-命令" class="headerlink" title="8️⃣cp 命令"></a>8️⃣cp 命令</h3><p>命令语法实例</p><p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p><ol><li>-i 提示</li><li>-r 复制目录及目录内所有项目</li><li>-a 复制的文件与原文件时间一样</li></ol><blockquote><p>注意：命令行复制，如果目标文件已经存在会提示是否覆盖，而在 shell 脚本中，如果不加 -i 参数，则不会提示，而是直接覆盖！</p></blockquote><h3 id="9️⃣ps-命令"><a href="#9️⃣ps-命令" class="headerlink" title="9️⃣ps 命令"></a>9️⃣ps 命令</h3><p>命令语法实例</p><p>命令参数：</p><ol><li>-A 显示所有进程</li><li>a 显示所有进程</li><li>-a 显示同一终端下所有进程</li><li>c 显示进程真实名称</li><li>e 显示环境变量</li><li>f 显示进程间的关系</li><li>r 显示当前终端运行的进程</li><li>-aux 显示所有包含其它使用的进程</li></ol><p>ps(process status)，用来查看当前运行的进程状态，一次性查看，如果需要动态连续结果使用 top</p><p>linux上进程有5种状态:</p><blockquote><ol><li>运行(正在运行或在运行队列中等待)</li><li>中断(休眠中, 受阻, 在等待某个条件的形成或接受到信号)</li><li>不可中断(收到信号不唤醒和不可运行, 进程必须等待直到有中断发生)</li><li>僵死(进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放)</li><li>停止(进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行运行)</li></ol></blockquote><p>ps 工具标识进程的5种状态码:</p><blockquote><ol><li>D 不可中断 uninterruptible sleep (usually IO)</li><li>R 运行 runnable (on run queue)</li><li>S 中断 sleeping</li><li>T 停止 traced or stopped</li><li>Z 僵死 a defunct (”zombie”) process</li></ol></blockquote><h3 id="🔟top-命令"><a href="#🔟top-命令" class="headerlink" title="🔟top 命令"></a>🔟top 命令</h3><p>命令语法实例</p><p>常用参数：</p><ol><li>-c 显示完整的进程命令</li><li>-s 保密模式</li><li>-p &lt;进程号&gt; 指定进程显示</li><li>-n &lt;次数&gt;循环显示次数</li></ol><blockquote><p>显示当前系统正在执行的进程的相关信息，包括进程 ID、内存占用率、CPU 占用率等</p></blockquote><h3 id="1️⃣1️⃣kill-命令"><a href="#1️⃣1️⃣kill-命令" class="headerlink" title="1️⃣1️⃣kill 命令"></a>1️⃣1️⃣kill 命令</h3><p>命令语法实例</p><p>常用参数：</p><ol><li>-l 信号，若果不加信号的编号参数，则使用“-l”参数会列出全部的信号名称</li><li>-a 当处理当前进程时，不限制命令名和进程号的对应关系</li><li>-p 指定kill 命令只打印相关进程的进程号，而不发送任何信号</li><li>-s 指定发送信号</li><li>-u 指定用户</li></ol><blockquote><p>发送指定的信号到相应进程。不指定型号将发送SIGTERM（15）终止指定进程。如果任无法终止该程序可用”-KILL” 参数，其发送的信号为SIGKILL(9) ，将强制结束进程，使用ps命令或者jobs 命令可以查看进程号。root用户将影响用户的进程，非root用户只能影响自己的进程。</p></blockquote><h3 id="1️⃣2️⃣free-命令"><a href="#1️⃣2️⃣free-命令" class="headerlink" title="1️⃣2️⃣free 命令"></a>1️⃣2️⃣free 命令</h3><p>命令语法实例</p><p>命令参数：</p><ol><li>-b 以Byte显示内存使用情况</li><li>-k 以kb为单位显示内存使用情况</li><li>-m 以mb为单位显示内存使用情况</li><li>-g 以gb为单位显示内存使用情况</li><li>-s&lt;间隔秒数&gt; 持续显示内存</li><li>-t 显示内存使用总合</li></ol><blockquote><p>显示系统内存使用情况，包括物理内存、交互区内存(swap)和内核缓冲区内存。</p></blockquote><h2 id="Linux-vi-vim"><a href="#Linux-vi-vim" class="headerlink" title="Linux vi&#x2F;vim"></a>Linux vi&#x2F;vim</h2><h3 id="什么是-vim"><a href="#什么是-vim" class="headerlink" title="什么是 vim"></a>什么是 vim</h3><blockquote><p>Vim 是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。<br>简单的来说， vi 是老式的字处理器，不过功能已经很齐全了，但是还是有可以进步的地方。 vim 则可以说是程序开发者的一项很好用的工具。<br>连 vim 的官方网站 (<a href="https://blog.qianhuya.me/go.html?fox=aHR0cHM6Ly93d3cudmltLm9yZy8=">https://www.vim.org/</a>) 自己也说 vim 是一个程序开发工具而不是文字处理软件。</p></blockquote><h3 id="vim-键盘图"><a href="#vim-键盘图" class="headerlink" title="vim 键盘图"></a>vim 键盘图</h3><p><a href="https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif"><img src="https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif" alt="vim 键盘图"></a></p><h3 id="vi-vim-的使用"><a href="#vi-vim-的使用" class="headerlink" title="vi&#x2F;vim 的使用"></a>vi&#x2F;vim 的使用</h3><p>基本上 vi&#x2F;vim 共分为三种模式，<code>命令模式（Command Mode）</code>、<code>输入模式（Insert Mode）</code> 和 <code>命令行模式（Command-Line Mode）</code>。</p><h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>命令模式输入模式底线命令模式</p><p>用户刚刚启动 vi&#x2F;vim，便进入了命令模式</p><p>此状态下敲击键盘动作会被 Vim 识别为命令，而非输入字符，比如我们此时按下 i，并不会输入一个字符，i 被当作了一个命令。 以下是普通模式常用的几个命令：</p><ul><li>i – 切换到输入模式，在光标当前位置开始输入文本。</li><li>x – 删除当前光标所在处的字符。</li><li>: – 切换到底线命令模式，以在最底一行输入命令。</li><li>a – 进入插入模式，在光标下一个位置开始输入文本。</li><li>o：在当前行的下方插入一个新行，并进入插入模式。</li><li>O – 在当前行的上方插入一个新行，并进入插入模式。</li><li>dd – 剪切当前行。</li><li>yy – 复制当前行。</li><li>p（小写） – 粘贴剪贴板内容到光标下方。</li><li>P（大写）– 粘贴剪贴板内容到光标上方。</li><li>u – 撤销上一次操作。</li><li>Ctrl + r – 重做上一次撤销的操作。</li><li>:w – 保存文件。</li><li>:q – 退出 Vim 编辑器。</li><li>:q! – 强制退出Vim 编辑器，不保存修改。</li></ul><p>若想要编辑文本，只需要启动 Vim，进入了命令模式，按下 <code>i</code> 切换到输入模式即可。<br>命令模式只有一些最基本的命令，因此仍要依靠底线命令行模式输入更多命令。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vps </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VPS常用脚本自用收藏</title>
+      <link href="/posts/88d9/"/>
+      <url>/posts/88d9/</url>
+      
+        <content type="html"><![CDATA[<h2 id="📄测评类"><a href="#📄测评类" class="headerlink" title="📄测评类"></a>📄测评类</h2><ul><li>IP质量体检脚本 <a href="https://github.com/xykt/IPQuality">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls IP.Check.Place)</span><br></pre></td></tr></table></figure><ul><li>VPS融合怪服务器测评脚本 <a href="https://github.com/spiritLHLS/ecs">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/spiritLHLS/ecs/raw/main/ecs.sh -o ecs.sh &amp;&amp; chmod +x ecs.sh &amp;&amp; bash ecs.sh -m 1</span><br></pre></td></tr></table></figure><ul><li>检测VPS内存是否超售的一键脚本 <a href="https://github.com/uselibrary/memoryCheck">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/uselibrary/memoryCheck/main/memoryCheck.sh | bash</span><br></pre></td></tr></table></figure><h2 id="🧰工具类"><a href="#🧰工具类" class="headerlink" title="🧰工具类"></a>🧰工具类</h2><ul><li>vps一键脚本工具</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/eooce/ssh_tool/main/ssh_tool.sh -o ssh_tool.sh &amp;&amp; chmod +x ssh_tool.sh &amp;&amp; ./ssh_tool.sh</span><br></pre></td></tr></table></figure><ul><li>科技lion一键工具</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sL kejilion.sh)</span><br></pre></td></tr></table></figure><h2 id="💾部署类"><a href="#💾部署类" class="headerlink" title="💾部署类"></a>💾部署类</h2><ul><li>xeefei&#x2F;3x-ui</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh)</span><br></pre></td></tr></table></figure><ul><li>甬哥x-ui</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install.sh)</span><br></pre></td></tr></table></figure><ul><li>甬哥Sing-box精装桶</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh)</span><br></pre></td></tr></table></figure><h2 id="💻DD重装"><a href="#💻DD重装" class="headerlink" title="💻DD重装"></a>💻DD重装</h2><ul><li>一键脚本</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh &amp;&amp; bash reinstall.sh</span><br></pre></td></tr></table></figure><h3 id="功能-安装-Linux"><a href="#功能-安装-Linux" class="headerlink" title="功能 : 安装 Linux"></a>功能 : 安装 Linux</h3><blockquote><ul><li>不输入版本号，则安装最新版</li><li>不含 boot 分区（Fedora 例外），不含 swap 分区，最大化利用磁盘空间</li><li>在虚拟机上，会自动安装官方精简内核</li></ul></blockquote><h3 id="支持的系统和版本"><a href="#支持的系统和版本" class="headerlink" title="支持的系统和版本"></a>支持的系统和版本</h3><p>安装 Debian &#x2F; Kali 时，x86 可通过后台 VNC 查看安装进度，ARM 可通过串行控制台查看安装进度。<br>安装其它系统时，可通过多种方式（SSH、HTTP 80 端口、后台 VNC、串行控制台）查看安装进度。</p><blockquote><p>复制对应系统安装命令（删除多余版本号）</p><ol><li>bash reinstall.sh centos 7|9 (9 为 stream 版本)</li><li>bash reinstall.sh oracle 7|8|9</li><li>bash reinstall.sh alma 8|9</li><li>bash reinstall.sh rocky 8|9</li><li>bash reinstall.sh fedora 39|40</li><li>bash reinstall.sh debian 10|11|12</li><li>bash reinstall.sh ubuntu 20.04|22.04|24.04</li><li>bash reinstall.sh alpine 3.17|3.18|3.19|3.20</li><li>bash reinstall.sh opensuse 15.5|15.6|tumbleweed</li><li>bash reinstall.sh kali</li><li>bash reinstall.sh arch</li><li>bash reinstall.sh gentoo</li></ol></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vps </tag>
+            
+            <tag> 脚本 </tag>
+            
+            <tag> ssh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/posts/3eeb/"/>
+      <url>/posts/3eeb/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hello World </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hello World </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
