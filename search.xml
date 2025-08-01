@@ -85,35 +85,6 @@
     
     
     <entry>
-      <title>VPS常用脚本自用收藏</title>
-      <link href="/posts/88d9/"/>
-      <url>/posts/88d9/</url>
-      
-        <content type="html"><![CDATA[<h2 id="📄测评类"><a href="#📄测评类" class="headerlink" title="📄测评类"></a>📄测评类</h2><ul><li>IP质量体检脚本 <a href="https://github.com/xykt/IPQuality">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls IP.Check.Place)</span><br></pre></td></tr></table></figure><ul><li>VPS融合怪服务器测评脚本 <a href="https://github.com/spiritLHLS/ecs">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/spiritLHLS/ecs/raw/main/ecs.sh -o ecs.sh &amp;&amp; chmod +x ecs.sh &amp;&amp; bash ecs.sh -m 1</span><br></pre></td></tr></table></figure><ul><li>检测VPS内存是否超售的一键脚本 <a href="https://github.com/uselibrary/memoryCheck">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/uselibrary/memoryCheck/main/memoryCheck.sh | bash</span><br></pre></td></tr></table></figure><h2 id="🧰工具类"><a href="#🧰工具类" class="headerlink" title="🧰工具类"></a>🧰工具类</h2><ul><li>vps一键脚本工具</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/eooce/ssh_tool/main/ssh_tool.sh -o ssh_tool.sh &amp;&amp; chmod +x ssh_tool.sh &amp;&amp; ./ssh_tool.sh</span><br></pre></td></tr></table></figure><ul><li>科技lion一键工具</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sL kejilion.sh)</span><br></pre></td></tr></table></figure><h2 id="💾部署类"><a href="#💾部署类" class="headerlink" title="💾部署类"></a>💾部署类</h2><ul><li>xeefei&#x2F;3x-ui</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh)</span><br></pre></td></tr></table></figure><ul><li>甬哥x-ui</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install.sh)</span><br></pre></td></tr></table></figure><ul><li>甬哥Sing-box精装桶</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh)</span><br></pre></td></tr></table></figure><h2 id="💻DD重装"><a href="#💻DD重装" class="headerlink" title="💻DD重装"></a>💻DD重装</h2><ul><li>一键脚本</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh &amp;&amp; bash reinstall.sh</span><br></pre></td></tr></table></figure><h3 id="功能-安装-Linux"><a href="#功能-安装-Linux" class="headerlink" title="功能 : 安装 Linux"></a>功能 : 安装 Linux</h3><blockquote><ul><li>不输入版本号，则安装最新版</li><li>不含 boot 分区（Fedora 例外），不含 swap 分区，最大化利用磁盘空间</li><li>在虚拟机上，会自动安装官方精简内核</li></ul></blockquote><h3 id="支持的系统和版本"><a href="#支持的系统和版本" class="headerlink" title="支持的系统和版本"></a>支持的系统和版本</h3><p>安装 Debian &#x2F; Kali 时，x86 可通过后台 VNC 查看安装进度，ARM 可通过串行控制台查看安装进度。<br>安装其它系统时，可通过多种方式（SSH、HTTP 80 端口、后台 VNC、串行控制台）查看安装进度。</p><blockquote><p>复制对应系统安装命令（删除多余版本号）</p><ol><li>bash reinstall.sh centos 7|9 (9 为 stream 版本)</li><li>bash reinstall.sh oracle 7|8|9</li><li>bash reinstall.sh alma 8|9</li><li>bash reinstall.sh rocky 8|9</li><li>bash reinstall.sh fedora 39|40</li><li>bash reinstall.sh debian 10|11|12</li><li>bash reinstall.sh ubuntu 20.04|22.04|24.04</li><li>bash reinstall.sh alpine 3.17|3.18|3.19|3.20</li><li>bash reinstall.sh opensuse 15.5|15.6|tumbleweed</li><li>bash reinstall.sh kali</li><li>bash reinstall.sh arch</li><li>bash reinstall.sh gentoo</li></ol></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 教程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> vps </tag>
-            
-            <tag> 脚本 </tag>
-            
-            <tag> ssh </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hello World</title>
       <link href="/posts/3eeb/"/>
       <url>/posts/3eeb/</url>
@@ -131,6 +102,35 @@
         <tags>
             
             <tag> Hello World </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VPS常用脚本自用收藏</title>
+      <link href="/posts/88d9/"/>
+      <url>/posts/88d9/</url>
+      
+        <content type="html"><![CDATA[<h2 id="👻一键脚本"><a href="#👻一键脚本" class="headerlink" title="👻一键脚本"></a>👻一键脚本</h2><ul><li>nginx安装、反代一键脚本</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O yu_nginx_nz.sh &quot;https://raw.030301.xyz/Releases/yu_nginx_nz.sh&quot; &amp;&amp; chmod +x yu_nginx_nz.sh &amp;&amp; ./yu_nginx_nz.sh</span><br></pre></td></tr></table></figure><ul><li>安装Docker 和 Docker Compose一键脚本</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O yu_docker.sh &quot;https://raw.030301.xyz/Releases/yu_docker.sh&quot; &amp;&amp; chmod +x yu_docker.sh &amp;&amp; ./yu_docker.sh</span><br></pre></td></tr></table></figure><h2 id="📄测评类"><a href="#📄测评类" class="headerlink" title="📄测评类"></a>📄测评类</h2><ul><li>IP质量体检脚本 <a href="https://github.com/xykt/IPQuality">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls IP.Check.Place)</span><br></pre></td></tr></table></figure><ul><li>VPS融合怪服务器测评脚本 <a href="https://github.com/spiritLHLS/ecs">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/spiritLHLS/ecs/raw/main/ecs.sh -o ecs.sh &amp;&amp; chmod +x ecs.sh &amp;&amp; bash ecs.sh -m 1</span><br></pre></td></tr></table></figure><ul><li>检测VPS内存是否超售的一键脚本 <a href="https://github.com/uselibrary/memoryCheck">点击前往GitHub仓库</a></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/uselibrary/memoryCheck/main/memoryCheck.sh | bash</span><br></pre></td></tr></table></figure><h2 id="🧰工具类"><a href="#🧰工具类" class="headerlink" title="🧰工具类"></a>🧰工具类</h2><ul><li>vps一键脚本工具</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/eooce/ssh_tool/main/ssh_tool.sh -o ssh_tool.sh &amp;&amp; chmod +x ssh_tool.sh &amp;&amp; ./ssh_tool.sh</span><br></pre></td></tr></table></figure><ul><li>科技lion一键工具</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sL kejilion.sh)</span><br></pre></td></tr></table></figure><h2 id="💾部署类"><a href="#💾部署类" class="headerlink" title="💾部署类"></a>💾部署类</h2><ul><li>xeefei&#x2F;3x-ui</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/xeefei/3x-ui/master/install.sh)</span><br></pre></td></tr></table></figure><ul><li>甬哥x-ui</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install.sh)</span><br></pre></td></tr></table></figure><ul><li>甬哥Sing-box精装桶</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/sb.sh)</span><br></pre></td></tr></table></figure><h2 id="💻DD重装"><a href="#💻DD重装" class="headerlink" title="💻DD重装"></a>💻DD重装</h2><ul><li>一键脚本</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh &amp;&amp; bash reinstall.sh</span><br></pre></td></tr></table></figure><h3 id="功能-安装-Linux"><a href="#功能-安装-Linux" class="headerlink" title="功能 : 安装 Linux"></a>功能 : 安装 Linux</h3><blockquote><ul><li>不输入版本号，则安装最新版</li><li>不含 boot 分区（Fedora 例外），不含 swap 分区，最大化利用磁盘空间</li><li>在虚拟机上，会自动安装官方精简内核</li></ul></blockquote><h3 id="支持的系统和版本"><a href="#支持的系统和版本" class="headerlink" title="支持的系统和版本"></a>支持的系统和版本</h3><p>安装 Debian &#x2F; Kali 时，x86 可通过后台 VNC 查看安装进度，ARM 可通过串行控制台查看安装进度。<br>安装其它系统时，可通过多种方式（SSH、HTTP 80 端口、后台 VNC、串行控制台）查看安装进度。</p><blockquote><p>复制对应系统安装命令（删除多余版本号）</p><ol><li>bash reinstall.sh centos 7|9 (9 为 stream 版本)</li><li>bash reinstall.sh oracle 7|8|9</li><li>bash reinstall.sh alma 8|9</li><li>bash reinstall.sh rocky 8|9</li><li>bash reinstall.sh fedora 39|40</li><li>bash reinstall.sh debian 10|11|12</li><li>bash reinstall.sh ubuntu 20.04|22.04|24.04</li><li>bash reinstall.sh alpine 3.17|3.18|3.19|3.20</li><li>bash reinstall.sh opensuse 15.5|15.6|tumbleweed</li><li>bash reinstall.sh kali</li><li>bash reinstall.sh arch</li><li>bash reinstall.sh gentoo</li></ol></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vps </tag>
+            
+            <tag> 脚本 </tag>
+            
+            <tag> ssh </tag>
             
         </tags>
       
